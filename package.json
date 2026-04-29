@@ -9,6 +9,8 @@
     "lint": "biome lint",
     "format": "biome format --write",
     "format:check": "biome format",
+    "check": "biome check",
+    "check:fix": "biome check --write",
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate"
   },
