@@ -87,9 +87,9 @@
 
 ## Integration (統合)
 
-- [ ] 11. 認証ページとルートの実装
-  - [ ] 11.1 app/(auth)/login/page.tsx でログインページを実装
-  - [ ] 11.2 app/(auth)/signup/page.tsx でサインアップページを実装
+- [x] 11. 認証ページとルートの実装
+  - [x] 11.1 app/(auth)/login/page.tsx でログインページを実装
+  - [x] 11.2 app/(auth)/signup/page.tsx でサインアップページを実装
   - 完了状態: /login と /signup で認証フォームが表示される
   - _Requirements: 1.1, 1.4, 1.5_
   - _Boundary: Auth Pages_
