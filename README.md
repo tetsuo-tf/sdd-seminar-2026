@@ -43,6 +43,8 @@
 
 - [mise](https://mise.jdx.dev/)（推奨）または Bun 直接インストール ([https://bun.com/docs/installation](https://bun.com/docs/installation))
 - Git
+- SQLite3(DB操作を行う場合)
+  - Windowsは管理者権限のコマンドプロンプトからWingetでインストールしてください (例: `winget install -e --id SQLite.SQLite`)
 
 mise を使う場合、リポジトリのルートで自動的に `bun = "latest"` がアクティベートされます。
 
@@ -96,7 +98,11 @@ bun run start          # 本番サーバ起動
 bun run check:fix      # Biome で format + lint + import 並べ替え（コード変更後に必ず実行）
 bun run check          # Biome チェックのみ（CI 用）
 bun run lint           # lint のみ
-bun run format         # format のみ
+bun run format         # format のみ（ファイル書き換え）
+bun run format:check   # format チェックのみ（書き換えなし）
+
+bun run test           # Vitest でテスト実行（1 回）
+bun run test:watch     # Vitest ウォッチモード
 
 bun run db:migrate     # Prisma マイグレーション
 bun run db:generate    # Prisma クライアント生成
