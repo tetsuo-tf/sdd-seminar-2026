@@ -30,7 +30,7 @@ export async function signupAction(
   }
 
   try {
-    await auth.api.signUpEmail({
+    const result = await auth.api.signUpEmail({
       body: {
         email: validation.data.email,
         password: validation.data.password,
@@ -38,26 +38,26 @@ export async function signupAction(
       },
     });
 
-    // Get the session after signup to determine redirect
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-
-    if (!session) {
+    if (!result) {
       return {
         status: "error",
         formError: "サインアップに失敗しました",
       };
     }
 
-    // Redirect based on role
-    const role = session.user.role as "employee" | "it-staff";
+    // Redirect based on role from the returned session
+    const role = result.user.role as "employee" | "it-staff";
     if (role === "it-staff") {
       redirect("/admin/inquiries");
     } else {
       redirect("/inquiries");
     }
   } catch (error) {
+    // Re-throw NEXT_REDIRECT errors (they're not real errors)
+    if (error instanceof Error && error.message.startsWith("NEXT_REDIRECT")) {
+      throw error;
+    }
+
     // Handle Better Auth errors
     if (error instanceof Error) {
       if (error.message.includes("USER_ALREADY_EXISTS")) {
@@ -100,33 +100,33 @@ export async function loginAction(
   }
 
   try {
-    await auth.api.signInEmail({
+    const result = await auth.api.signInEmail({
       body: {
         email: validation.data.email,
         password: validation.data.password,
       },
     });
 
-    // Get the session after login to determine redirect
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-
-    if (!session) {
+    if (!result) {
       return {
         status: "error",
         formError: "ログインに失敗しました",
       };
     }
 
-    // Redirect based on role
-    const role = session.user.role as "employee" | "it-staff";
+    // Redirect based on role from the returned session
+    const role = result.user.role as "employee" | "it-staff";
     if (role === "it-staff") {
       redirect("/admin/inquiries");
     } else {
       redirect("/inquiries");
     }
-  } catch {
+  } catch (error) {
+    // Re-throw NEXT_REDIRECT errors (they're not real errors)
+    if (error instanceof Error && error.message.startsWith("NEXT_REDIRECT")) {
+      throw error;
+    }
+
     // Generic error message for security (don't reveal if email exists)
     return {
       status: "error",
