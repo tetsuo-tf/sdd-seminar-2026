@@ -17,10 +17,10 @@
   - _Requirements: 1.1, 2.1_
   - _Boundary: Prisma Layer_
 
-- [ ] 3. Better Auth の設定と API ルート
-  - [ ] 3.1 lib/auth.ts で Better Auth サーバインスタンスを設定（ロール拡張含む）
-  - [ ] 3.2 lib/auth-client.ts でクライアント側 auth インスタンスを作成
-  - [ ] 3.3 app/api/auth/[...all]/route.ts で Better Auth ハンドラーをエクスポート
+- [x] 3. Better Auth の設定と API ルート
+  - [x] 3.1 lib/auth.ts で Better Auth サーバインスタンスを設定（ロール拡張含む）
+  - [x] 3.2 lib/auth-client.ts でクライアント側 auth インスタンスを作成
+  - [x] 3.3 app/api/auth/[...all]/route.ts で Better Auth ハンドラーをエクスポート
   - 完了状態: Better Auth エンドポイントが `/api/auth/*` で応答する
   - _Requirements: 1.1, 1.2, 1.3, 2.1_
   - _Boundary: Auth Domain_
@@ -28,25 +28,25 @@
 
 ## Core (コア実装)
 
-- [ ] 4. 認可ヘルパーの実装
-  - [ ] 4.1 lib/authz.ts で requireUser、requireRole、assertOwner 関数を実装
-  - [ ] 4.2 server-only インポートを追加してクライアント側からの呼び出しを防止
+- [x] 4. 認可ヘルパーの実装
+  - [x] 4.1 lib/authz.ts で requireUser、requireRole、assertOwner 関数を実装
+  - [x] 4.2 server-only インポートを追加してクライアント側からの呼び出しを防止
   - 完了状態: Server Components/Actions からセッションとロール検証が可能
   - _Requirements: 1.7, 2.2, 2.3, 2.4, 2.5_
   - _Boundary: Authz Layer_
   - _Depends: 3_
 
-- [ ] 5. バリデーションスキーマの実装
-  - [ ] 5.1 lib/validation.ts で signupSchema、loginSchema、inquirySchema、statusUpdateSchema を実装
-  - [ ] 5.2 ActionState と ActionFieldErrors 型を定義
+- [x] 5. バリデーションスキーマの実装
+  - [x] 5.1 lib/validation.ts で signupSchema、loginSchema、inquirySchema、statusUpdateSchema を実装
+  - [x] 5.2 ActionState と ActionFieldErrors 型を定義
   - 完了状態: 全 Server Actions で Zod 検証が使用可能
   - _Requirements: 1.3, 3.4, 3.5, 6.1, 6.6_
   - _Boundary: Validation Layer_
   - _Depends: 2_
 
-- [ ] 6. 問合せドメイン型とラベルの実装
-  - [ ] 6.1 lib/inquiries/types.ts で Status、Category、Inquiry、InquiryListCriteria 型を定義
-  - [ ] 6.2 lib/inquiries/labels.ts で日本語ラベルマップを定義
+- [x] 6. 問合せドメイン型とラベルの実装
+  - [x] 6.1 lib/inquiries/types.ts で Status、Category、Inquiry、InquiryListCriteria 型を定義
+  - [x] 6.2 lib/inquiries/labels.ts で日本語ラベルマップを定義
   - 完了状態: 型安全な問合せデータ操作が可能
   - _Requirements: 3.2, 6.1_
   - _Boundary: Inquiry Types_
