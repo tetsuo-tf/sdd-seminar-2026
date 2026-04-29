@@ -41,7 +41,7 @@
 
 ### 1. 必要ツール
 
-- [mise](https://mise.jdx.dev/)（推奨）または Bun 直接インストール
+- [mise](https://mise.jdx.dev/)（推奨）または Bun 直接インストール ([https://bun.com/docs/installation](https://bun.com/docs/installation))
 - Git
 
 mise を使う場合、リポジトリのルートで自動的に `bun = "latest"` がアクティベートされます。
