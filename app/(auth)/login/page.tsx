@@ -9,8 +9,18 @@ export default function LoginPage() {
       <AuthForm<LoginInput>
         title="ログイン"
         fields={[
-          { name: "email", label: "メールアドレス", type: "email", required: true },
-          { name: "password", label: "パスワード", type: "password", required: true },
+          {
+            name: "email",
+            label: "メールアドレス",
+            type: "email",
+            required: true,
+          },
+          {
+            name: "password",
+            label: "パスワード",
+            type: "password",
+            required: true,
+          },
         ]}
         action={loginAction}
         submitText="ログイン"

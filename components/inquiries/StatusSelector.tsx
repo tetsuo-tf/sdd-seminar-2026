@@ -9,7 +9,11 @@ interface StatusSelectorProps {
   onUpdate: (inquiryId: string, nextStatus: string) => void;
 }
 
-export function StatusSelector({ currentStatus, inquiryId, onUpdate }: StatusSelectorProps) {
+export function StatusSelector({
+  currentStatus,
+  inquiryId,
+  onUpdate,
+}: StatusSelectorProps) {
   return (
     <select
       value={currentStatus}

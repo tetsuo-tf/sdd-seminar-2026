@@ -26,7 +26,10 @@ export function InquiryFilterBar() {
     <div className="bg-white p-4 rounded-lg shadow-sm mb-6 space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label htmlFor="keyword" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="keyword"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             キーワード検索
           </label>
           <input
@@ -39,7 +42,10 @@ export function InquiryFilterBar() {
           />
         </div>
         <div>
-          <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="status"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             ステータス
           </label>
           <select
@@ -57,7 +63,10 @@ export function InquiryFilterBar() {
           </select>
         </div>
         <div>
-          <label htmlFor="sort" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="sort"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             並び順
           </label>
           <select

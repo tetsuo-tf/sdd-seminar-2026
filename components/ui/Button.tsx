@@ -19,7 +19,10 @@ export function Button({
       : "bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500";
 
   return (
-    <button className={`${baseStyles} ${variantStyles} ${className}`} {...props}>
+    <button
+      className={`${baseStyles} ${variantStyles} ${className}`}
+      {...props}
+    >
       {children}
     </button>
   );

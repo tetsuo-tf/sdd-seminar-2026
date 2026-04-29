@@ -7,7 +7,10 @@ interface InquiryListProps {
   showOwner?: boolean;
 }
 
-export function InquiryList({ inquiries, showOwner = false }: InquiryListProps) {
+export function InquiryList({
+  inquiries,
+  showOwner = false,
+}: InquiryListProps) {
   if (inquiries.length === 0) {
     return null;
   }

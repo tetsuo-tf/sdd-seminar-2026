@@ -4,7 +4,10 @@ import { CATEGORY_VALUES, STATUS_VALUES } from "@/lib/inquiries/types";
 export const signupSchema = z.object({
   email: z.string().email("有効なメールアドレスを入力してください"),
   password: z.string().min(8, "パスワードは8文字以上である必要があります"),
-  name: z.string().min(1, "名前を入力してください").max(60, "名前は60文字以下である必要があります"),
+  name: z
+    .string()
+    .min(1, "名前を入力してください")
+    .max(60, "名前は60文字以下である必要があります"),
 });
 
 export const loginSchema = z.object({
@@ -13,11 +16,17 @@ export const loginSchema = z.object({
 });
 
 export const inquirySchema = z.object({
-  title: z.string().min(1, "タイトルを入力してください").max(120, "タイトルは120文字以下である必要があります"),
+  title: z
+    .string()
+    .min(1, "タイトルを入力してください")
+    .max(120, "タイトルは120文字以下である必要があります"),
   category: z.enum(CATEGORY_VALUES, {
     errorMap: () => ({ message: "有効なカテゴリを選択してください" }),
   }),
-  body: z.string().min(1, "本文を入力してください").max(2000, "本文は2000文字以下である必要があります"),
+  body: z
+    .string()
+    .min(1, "本文を入力してください")
+    .max(2000, "本文は2000文字以下である必要があります"),
 });
 
 export const statusUpdateSchema = z.object({

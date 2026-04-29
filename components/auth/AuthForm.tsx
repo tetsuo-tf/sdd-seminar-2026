@@ -7,7 +7,12 @@ import type { ActionState } from "@/lib/validation";
 
 interface AuthFormProps<T> {
   title: string;
-  fields: Array<{ name: keyof T; label: string; type: string; required?: boolean }>;
+  fields: Array<{
+    name: keyof T;
+    label: string;
+    type: string;
+    required?: boolean;
+  }>;
   action: (prev: ActionState<T>, formData: FormData) => Promise<ActionState<T>>;
   submitText: string;
   extraFields?: React.ReactNode;
@@ -20,7 +25,9 @@ export function AuthForm<T extends Record<string, string>>({
   submitText,
   extraFields,
 }: AuthFormProps<T>) {
-  const [state, formAction, isPending] = useActionState(action, { status: "idle" });
+  const [state, formAction, isPending] = useActionState(action, {
+    status: "idle",
+  });
 
   return (
     <div className="max-w-md mx-auto">
@@ -34,8 +41,12 @@ export function AuthForm<T extends Record<string, string>>({
 
         {fields.map((field) => (
           <div key={String(field.name)}>
-            <label htmlFor={String(field.name)} className="block text-sm font-medium text-gray-700 mb-1">
-              {field.label} {field.required && <span className="text-red-500">*</span>}
+            <label
+              htmlFor={String(field.name)}
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              {field.label}{" "}
+              {field.required && <span className="text-red-500">*</span>}
             </label>
             <input
               type={field.type}
@@ -45,7 +56,9 @@ export function AuthForm<T extends Record<string, string>>({
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               disabled={isPending}
             />
-            <FieldError>{state.status === "error" && state.fieldErrors?.[field.name]}</FieldError>
+            <FieldError>
+              {state.status === "error" && state.fieldErrors?.[field.name]}
+            </FieldError>
           </div>
         ))}
 

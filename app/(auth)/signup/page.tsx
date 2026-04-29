@@ -10,8 +10,18 @@ export default function SignupPage() {
         title="サインアップ"
         fields={[
           { name: "name", label: "名前", type: "text", required: true },
-          { name: "email", label: "メールアドレス", type: "email", required: true },
-          { name: "password", label: "パスワード", type: "password", required: true },
+          {
+            name: "email",
+            label: "メールアドレス",
+            type: "email",
+            required: true,
+          },
+          {
+            name: "password",
+            label: "パスワード",
+            type: "password",
+            required: true,
+          },
         ]}
         action={signupAction}
         submitText="サインアップ"

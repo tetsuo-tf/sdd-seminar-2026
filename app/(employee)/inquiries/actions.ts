@@ -1,4 +1,5 @@
-import "server-only";
+"use server";
+
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/authz";

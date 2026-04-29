@@ -1,4 +1,5 @@
-import "server-only";
+"use server";
+
 import { revalidatePath } from "next/cache";
 import { requireRole } from "@/lib/authz";
 import { updateInquiryStatus } from "@/lib/inquiries/repository";
