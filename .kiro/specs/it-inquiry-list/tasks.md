@@ -60,26 +60,26 @@
   - _Boundary: Inquiry Repository_
   - _Depends: 2, 6_
 
-- [ ] 8. 認証 Server Actions の実装
-  - [ ] 8.1 app/(auth)/actions.ts で signupAction、loginAction、logoutAction を実装
-  - [ ] 8.2 エラーハンドリングとロール別リダイレクトを実装
+- [x] 8. 認証 Server Actions の実装
+  - [x] 8.1 app/(auth)/actions.ts で signupAction、loginAction、logoutAction を実装
+  - [x] 8.2 エラーハンドリングとロール別リダイレクトを実装
   - 完了状態: サインアップ・ログイン・ログアウトが機能する
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
   - _Boundary: Auth Actions_
   - _Depends: 3, 4, 5_
 
-- [ ] 9. 問合せ Server Actions の実装
-  - [ ] 9.1 app/(employee)/inquiries/actions.ts で createInquiryAction を実装
-  - [ ] 9.2 app/(it-staff)/admin/inquiries/actions.ts で updateInquiryStatusAction を実装
+- [x] 9. 問合せ Server Actions の実装
+  - [x] 9.1 app/(employee)/inquiries/actions.ts で createInquiryAction を実装
+  - [x] 9.2 app/(it-staff)/admin/inquiries/actions.ts で updateInquiryStatusAction を実装
   - 完了状態: 問合せ登録とステータス更新が機能する
   - _Requirements: 3.3, 3.4, 3.6, 6.3, 6.4, 6.5_
   - _Boundary: Inquiry Actions_
   - _Depends: 4, 5, 7_
 
-- [ ] 10. UI コンポーネントの実装
-  - [ ] 10.1 components/auth/AuthForm.tsx と LogoutButton.tsx を実装
-  - [ ] 10.2 components/inquiries/InquiryForm.tsx、InquiryList.tsx、InquiryFilterBar.tsx、StatusBadge.tsx、StatusSelector.tsx を実装
-  - [ ] 10.3 components/ui/FieldError.tsx、EmptyState.tsx、Button.tsx を実装
+- [x] 10. UI コンポーネントの実装
+  - [x] 10.1 components/auth/AuthForm.tsx と LogoutButton.tsx を実装
+  - [x] 10.2 components/inquiries/InquiryForm.tsx、InquiryList.tsx、InquiryFilterBar.tsx、StatusBadge.tsx、StatusSelector.tsx を実装
+  - [x] 10.3 components/ui/FieldError.tsx、EmptyState.tsx、Button.tsx を実装
   - 完了状態: 全 UI コンポーネントが使用可能
   - _Requirements: 3.1, 3.2, 4.2, 5.1, 5.2, 5.3, 5.4, 6.3_
   - _Boundary: UI Components_
