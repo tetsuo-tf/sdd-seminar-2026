@@ -95,10 +95,10 @@
   - _Boundary: Auth Pages_
   - _Depends: 8, 10_
 
-- [ ] 12. 社員向けページとレイアウトの実装
-  - [ ] 12.1 app/(employee)/layout.tsx でロールガードと共通ヘッダーを実装
-  - [ ] 12.2 app/(employee)/inquiries/page.tsx で自分の問合せ一覧を実装
-  - [ ] 12.3 app/(employee)/inquiries/new/page.tsx で問合せ登録フォームを実装
+- [x] 12. 社員向けページとレイアウトの実装
+  - [x] 12.1 app/(employee)/layout.tsx でロールガードと共通ヘッダーを実装
+  - [x] 12.2 app/(employee)/inquiries/page.tsx で自分の問合せ一覧を実装
+  - [x] 12.3 app/(employee)/inquiries/new/page.tsx で問合せ登録フォームを実装
   - 完了状態: 社員が問合せ登録と一覧確認ができる
   - _Requirements: 1.7, 2.2, 3.1, 4.1, 4.2, 4.3, 4.4_
   - _Boundary: Employee Pages_

@@ -39,9 +39,6 @@ export async function createInquiryAction(
       category: validation.data.category,
       body: validation.data.body,
     });
-
-    revalidatePath("/inquiries");
-    redirect("/inquiries");
   } catch (error) {
     if (error instanceof Error && error.message === "UNAUTHORIZED") {
       return {
@@ -62,4 +59,7 @@ export async function createInquiryAction(
       formError: "問合せの登録に失敗しました。もう一度お試しください",
     };
   }
+
+  revalidatePath("/inquiries");
+  redirect("/inquiries");
 }
