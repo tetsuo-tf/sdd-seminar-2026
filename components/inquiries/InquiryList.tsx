@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { CATEGORY_LABELS } from "@/lib/inquiries/labels";
 import type { InquiryWithOwner } from "@/lib/inquiries/types";
 import { StatusBadge } from "./StatusBadge";
@@ -5,18 +6,16 @@ import { StatusBadge } from "./StatusBadge";
 interface InquiryListProps {
   inquiries: InquiryWithOwner[];
   showOwner?: boolean;
+  renderStatus?: (inquiry: InquiryWithOwner) => ReactNode;
 }
 
 export function InquiryList({
   inquiries,
   showOwner = false,
+  renderStatus,
 }: InquiryListProps) {
-  if (inquiries.length === 0) {
-    return null;
-  }
-
   return (
-    <div className="overflow-x-auto">
+    <div className="bg-white shadow rounded-lg overflow-hidden">
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -49,7 +48,11 @@ export function InquiryList({
                 {CATEGORY_LABELS[inquiry.category]}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <StatusBadge status={inquiry.status} />
+                {renderStatus ? (
+                  renderStatus(inquiry)
+                ) : (
+                  <StatusBadge status={inquiry.status} />
+                )}
               </td>
               {showOwner && (
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
