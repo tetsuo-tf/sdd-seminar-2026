@@ -34,8 +34,15 @@
 
 **Location**: `components/<domain>/` and `components/ui/`
 **Purpose**:
+
 - `components/<domain>/`: ドメインに紐づく組み立て済みコンポーネント（例: `inquiries/InquiryForm.tsx`、`auth/AuthForm.tsx`）
 - `components/ui/`: ドメイン非依存のプリミティブ（`Button`、`EmptyState`、`FieldError` など）。ビジネスロジックを持たない。
+
+### Tests（コロケーション）
+
+**Location**: 対象モジュールと同一ディレクトリの `*.test.ts(x)`（例: `components/ui/Button.test.tsx`）
+**Purpose**: ユニット / コンポーネントテストは実装の隣に置き、import パスを短く保つ。`__tests__/` ディレクトリや `tests/` 集約ディレクトリは作らない。
+**Example**: `components/auth/LogoutButton.tsx` ⇔ `components/auth/LogoutButton.test.tsx`。Vitest の `include: ["**/*.test.{ts,tsx}"]` で自動収集される。
 
 ### Auth API Route
 
@@ -54,6 +61,7 @@
   - Server Actions: `actions.ts`
   - コンポーネント: PascalCase（例: `InquiryList.tsx`, `StatusBadge.tsx`）
   - ライブラリ: kebab / lower case（例: `auth-client.ts`, `repository.ts`）
+  - テスト: 対象ファイル名 + `.test.ts(x)`（例: `Button.test.tsx`）
 - **コンポーネント**: PascalCase、named export を基本とする
 - **関数**:
   - Server Action: `<verb><Entity>Action`（例: `createInquiryAction`）
@@ -84,6 +92,7 @@ import { STATUS_LABELS } from "./labels";
 ```
 
 **Path Alias**:
+
 - `@/` → プロジェクトルート（`tsconfig.json` の `paths` で定義）。**プロジェクト内参照は基本的に `@/` を使い**、相対 import は同一ディレクトリ内に限定。
 
 並び替えは Biome の organize-imports に任せ、手動で整えない。

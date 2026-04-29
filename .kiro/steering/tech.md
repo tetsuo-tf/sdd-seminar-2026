@@ -14,6 +14,7 @@ Next.js 16 App Router によるフルスタック構成。**Server Components + 
 - **Database**: Prisma + SQLite（`prismaAdapter` 経由、開発 DB は `prisma/dev.db`）
 - **Validation**: Zod（フォーム入力・Server Action 引数の境界で必ず通す）
 - **Lint / Format**: Biome 2.2（formatter + linter + organize-imports、indent 2 spaces）
+- **Testing**: Vitest 4 + Testing Library（React / user-event / jest-dom）+ happy-dom（`vitest.config.ts`、`vitest.setup.ts`）
 
 ## Key Libraries
 
@@ -54,7 +55,12 @@ Next.js 16 App Router によるフルスタック構成。**Server Components + 
 
 ### Testing
 
-- 現時点でテストフレームワークは未導入。導入時は型チェックと並走させる前提で別途 steering を追加すること
+- ランナーは **Vitest**（`globals: false`、`environment: "happy-dom"`、`include: ["**/*.test.{ts,tsx}"]`）。`@/` エイリアスは `vitest.config.ts` の `resolve.alias` で tsconfig と揃える
+- React コンポーネントのテストは `@testing-library/react` + `@testing-library/user-event`、マッチャは `@testing-library/jest-dom/vitest`（`vitest.setup.ts` で一括 import）
+- テストファイルは **対象モジュールにコロケーション**（例: `components/ui/Button.tsx` ⇔ `components/ui/Button.test.tsx`）。`__tests__/` ディレクトリは作らない
+- 各 `describe` の `afterEach` で `cleanup()` を呼び DOM をリセットする
+- アサート文・テスト名は日本語で書いてよい（プロダクト方針と揃える）
+- `vi.fn()` / `vi.mock()` で副作用を遮断し、Server Action / Better Auth クライアントなど外界依存はテスト境界でモックする
 
 ## Development Environment
 
@@ -69,6 +75,8 @@ Next.js 16 App Router によるフルスタック構成。**Server Components + 
 # Dev:        bun run dev
 # Build:      bun run build
 # Lint+Fmt:   bun run check:fix
+# Test:       bun run test         # 単発実行
+# Test watch: bun run test:watch
 # DB migrate: bun run db:migrate
 # DB client:  bun run db:generate
 ```
