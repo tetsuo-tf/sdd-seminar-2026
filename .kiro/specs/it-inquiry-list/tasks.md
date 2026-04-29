@@ -52,9 +52,9 @@
   - _Boundary: Inquiry Types_
   - _Depends: 2_
 
-- [ ] 7. 問合せリポジトリの実装
-  - [ ] 7.1 lib/inquiries/repository.ts で listInquiries、createInquiry、updateInquiryStatus、findInquiryById を実装
-  - [ ] 7.2 server-only インポートを追加
+- [x] 7. 問合せリポジトリの実装
+  - [x] 7.1 lib/inquiries/repository.ts で listInquiries、createInquiry、updateInquiryStatus、findInquiryById を実装
+  - [x] 7.2 server-only インポートを追加
   - 完了状態: Prisma 経由で問合せの CRUD 操作が可能
   - _Requirements: 3.3, 4.1, 4.3, 5.2, 5.3, 5.4, 5.5, 6.2, 6.4_
   - _Boundary: Inquiry Repository_
