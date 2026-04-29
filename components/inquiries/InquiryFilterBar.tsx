@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { STATUS_LABELS } from "@/lib/inquiries/labels";
 import { STATUS_VALUES } from "@/lib/inquiries/types";
 
@@ -12,6 +13,17 @@ export function InquiryFilterBar() {
   const status = searchParams.get("status") || "";
   const sort = searchParams.get("sort") || "createdAt_desc";
 
+  // IME 未確定中は URL を更新しないため、入力値をローカル管理する
+  const [keywordInput, setKeywordInput] = useState(keyword);
+  const isComposingRef = useRef(false);
+
+  // URL 側 (戻る/進む等) で keyword が変化した場合にローカル入力へ反映
+  useEffect(() => {
+    if (!isComposingRef.current) {
+      setKeywordInput(keyword);
+    }
+  }, [keyword]);
+
   const updateFilter = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value) {
@@ -20,6 +32,22 @@ export function InquiryFilterBar() {
       params.delete(key);
     }
     router.replace(`?${params.toString()}`);
+  };
+
+  const handleKeywordChange = (value: string) => {
+    setKeywordInput(value);
+    if (!isComposingRef.current) {
+      updateFilter("keyword", value);
+    }
+  };
+
+  const handleCompositionEnd = (
+    e: React.CompositionEvent<HTMLInputElement>,
+  ) => {
+    isComposingRef.current = false;
+    const value = e.currentTarget.value;
+    setKeywordInput(value);
+    updateFilter("keyword", value);
   };
 
   return (
@@ -35,8 +63,12 @@ export function InquiryFilterBar() {
           <input
             type="text"
             id="keyword"
-            value={keyword}
-            onChange={(e) => updateFilter("keyword", e.target.value)}
+            value={keywordInput}
+            onChange={(e) => handleKeywordChange(e.target.value)}
+            onCompositionStart={() => {
+              isComposingRef.current = true;
+            }}
+            onCompositionEnd={handleCompositionEnd}
             placeholder="タイトルまたは本文で検索"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />

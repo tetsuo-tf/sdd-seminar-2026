@@ -22,8 +22,8 @@ export async function listInquiries(
 
   if (criteria.keyword?.trim()) {
     where.OR = [
-      { title: { contains: criteria.keyword, mode: "insensitive" as const } },
-      { body: { contains: criteria.keyword, mode: "insensitive" as const } },
+      { title: { contains: criteria.keyword } },
+      { body: { contains: criteria.keyword } },
     ];
   }
 

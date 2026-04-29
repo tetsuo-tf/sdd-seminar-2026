@@ -58,9 +58,13 @@ export async function updateInquiryStatusAction(
       };
     }
 
-    return {
-      status: "error",
-      formError: "ステータスの更新に失敗しました。もう一度お試しください",
-    };
+    throw new Error("ステータスの更新に失敗しました。もう一度お試しください");
   }
+}
+
+export async function updateInquiryStatusSimple(formData: FormData) {
+  await updateInquiryStatusAction(
+    { status: "idle" } as ActionState<StatusUpdateInput>,
+    formData,
+  );
 }

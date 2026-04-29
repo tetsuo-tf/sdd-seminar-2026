@@ -104,9 +104,9 @@
   - _Boundary: Employee Pages_
   - _Depends: 4, 7, 9, 10_
 
-- [ ] 13. 情シス担当向けページとレイアウトの実装
-  - [ ] 13.1 app/(it-staff)/layout.tsx でロールガードと共通ヘッダーを実装
-  - [ ] 13.2 app/(it-staff)/admin/inquiries/page.tsx で全件一覧と検索・フィルタ・ソートを実装
+- [x] 13. 情シス担当向けページとレイアウトの実装
+  - [x] 13.1 app/(it-staff)/layout.tsx でロールガードと共通ヘッダーを実装
+  - [x] 13.2 app/(it-staff)/admin/inquiries/page.tsx で全件一覧と検索・フィルタ・ソートを実装
   - 完了状態: 情シス担当が全件一覧とステータス更新ができる
   - _Requirements: 1.7, 2.3, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7_
   - _Boundary: IT Staff Pages_
