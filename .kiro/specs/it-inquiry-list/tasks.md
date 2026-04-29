@@ -112,17 +112,17 @@
   - _Boundary: IT Staff Pages_
   - _Depends: 4, 7, 9, 10_
 
-- [ ] 14. ミドルウェアとルート保護の実装
-  - [ ] 14.1 middleware.ts で Edge ランタイムの Cookie 判定を実装
-  - [ ] 14.2 保護ルートの未ログイン時リダイレクトを実装
+- [x] 14. ミドルウェアとルート保護の実装
+  - [x] 14.1 middleware.ts で Edge ランタイムの Cookie 判定を実装
+  - [x] 14.2 保護ルートの未ログイン時リダイレクトを実装
   - 完了状態: 未ログインで保護ページにアクセスすると /login へリダイレクト
   - _Requirements: 1.7_
   - _Boundary: Middleware_
   - _Depends: 3_
 
-- [ ] 15. ルートページとレイアウトの統合
-  - [ ] 15.1 app/page.tsx を修正して認証状態に応じたリダイレクトを実装
-  - [ ] 15.2 app/layout.tsx のメタデータを更新
+- [x] 15. ルートページとレイアウトの統合
+  - [x] 15.1 app/page.tsx を修正して認証状態に応じたリダイレクトを実装
+  - [x] 15.2 app/layout.tsx のメタデータを更新
   - 完了状態: ルートアクセス時にロール別ホームへリダイレクト
   - _Requirements: 1.4, 1.7_
   - _Boundary: Root Integration_
