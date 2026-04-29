@@ -9,10 +9,10 @@
   - 完了状態: `bun install` が成功し、.env が設定されている
   - _Requirements: 1.1_
 
-- [ ] 2. Prisma スキーマ定義とデータベース初期化
-  - [ ] 2.1 Prisma を初期化し、schema.prisma に User、Account、Session、Inquiry モデルを定義
-  - [ ] 2.2 Prisma クライアントシングルトン (lib/prisma.ts) を実装
-  - [ ] 2.3 データベースマイグレーションを実行して dev.db を生成
+- [x] 2. Prisma スキーマ定義とデータベース初期化
+  - [x] 2.1 Prisma を初期化し、schema.prisma に User、Account、Session、Inquiry モデルを定義
+  - [x] 2.2 Prisma クライアントシングルトン (lib/prisma.ts) を実装
+  - [x] 2.3 データベースマイグレーションを実行して dev.db を生成
   - 完了状態: `npx prisma migrate dev` が成功し、dev.db が生成されている
   - _Requirements: 1.1, 2.1_
   - _Boundary: Prisma Layer_
