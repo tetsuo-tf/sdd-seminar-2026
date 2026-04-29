@@ -3,6 +3,7 @@
 Kiro-style Spec-Driven Development on an agentic SDLC
 
 ## Project Memory
+
 Project memory keeps persistent guidance (steering, specs notes, component docs) so Windsurf honors your standards each run. Treat it as the long-lived source of truth for patterns, conventions, and decisions.
 
 - Use `.kiro/steering/` for project-wide policies: architecture principles, naming schemes, security constraints, tech stack decisions, api standards, etc.
@@ -12,6 +13,7 @@ Project memory keeps persistent guidance (steering, specs notes, component docs)
 ## Project Context
 
 ### Paths
+
 - Steering: `.kiro/steering/`
 - Specs: `.kiro/specs/`
 
@@ -21,13 +23,16 @@ Project memory keeps persistent guidance (steering, specs notes, component docs)
 **Specs** (`.kiro/specs/`) - Formalize development process for individual features
 
 ### Active Specifications
+
 - Check `.kiro/specs/` for active specifications
 - Use `@kiro-spec-status [feature-name]` to check progress
 
 ## Development Guidelines
+
 - Think in English, generate responses in Japanese. All Markdown content written to project files (e.g., requirements.md, design.md, tasks.md, research.md, validation reports) MUST be written in the target language configured for this specification (see spec.json.language).
 
 ## Minimal Workflow
+
 - Phase 0 (optional): `@kiro-steering`, `@kiro-steering-custom`
 - Discovery: `@kiro-discovery "idea"` — determines action path, writes brief.md + roadmap.md for multi-spec projects
 - Phase 1 (Specification):
@@ -46,7 +51,9 @@ Project memory keeps persistent guidance (steering, specs notes, component docs)
 - Progress check: `@kiro-spec-status {feature}` (use anytime)
 
 ## Skills Structure
+
 Skills are located in `.windsurf/skills@kiro-*/SKILL.md`
+
 - Each skill is a directory with a `SKILL.md` file
 - Use `/skills` to inspect currently available skills
 - Invoke a skill directly with `@kiro-<skill-name>`
@@ -58,12 +65,15 @@ Skills are located in `.windsurf/skills@kiro-*/SKILL.md`
 > Windsurf does not support programmatic sub-agent dispatch. Skills that reference parallel sub-agents will execute sequentially in the main context.
 
 ## Development Rules
+
 - 3-phase approval workflow: Requirements → Design → Tasks → Implementation
 - Human review required each phase; use `-y` only for intentional fast-track
 - Keep steering current and verify alignment with `@kiro-spec-status`
 - Follow the user's instructions precisely, and within that scope act autonomously: gather the necessary context and complete the requested work end-to-end in this run, asking questions only when essential information is missing or the instructions are critically ambiguous.
+- **After generating or modifying code, always run `bun run check:fix` to ensure code quality and formatting.**
 
 ## Steering Configuration
+
 - Load entire `.kiro/steering/` as project memory
 - Default files: `product.md`, `tech.md`, `structure.md`
 - Custom files are supported (managed via `@kiro-steering-custom`)
