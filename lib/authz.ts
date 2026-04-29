@@ -1,7 +1,7 @@
 import "server-only";
 import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
 import type { SessionUser } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 
 export type Role = "employee" | "it-staff";
 

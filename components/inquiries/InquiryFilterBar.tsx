@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { STATUS_VALUES } from "@/lib/inquiries/types";
 import { STATUS_LABELS } from "@/lib/inquiries/labels";
+import { STATUS_VALUES } from "@/lib/inquiries/types";
 
 export function InquiryFilterBar() {
   const router = useRouter();

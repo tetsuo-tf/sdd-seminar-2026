@@ -1,6 +1,6 @@
+import { CATEGORY_LABELS } from "@/lib/inquiries/labels";
 import type { InquiryWithOwner } from "@/lib/inquiries/types";
 import { StatusBadge } from "./StatusBadge";
-import { CATEGORY_LABELS } from "@/lib/inquiries/labels";
 
 interface InquiryListProps {
   inquiries: InquiryWithOwner[];

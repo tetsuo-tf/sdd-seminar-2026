@@ -1,7 +1,7 @@
-import { AuthForm } from "@/components/auth/AuthForm";
-import { loginAction } from "../actions";
-import type { LoginInput } from "@/lib/validation";
 import Link from "next/link";
+import { AuthForm } from "@/components/auth/AuthForm";
+import type { LoginInput } from "@/lib/validation";
+import { loginAction } from "../actions";
 
 export default function LoginPage() {
   return (

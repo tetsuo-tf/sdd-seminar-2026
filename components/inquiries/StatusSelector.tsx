@@ -1,7 +1,7 @@
 "use client";
 
-import { STATUS_VALUES } from "@/lib/inquiries/types";
 import { STATUS_LABELS } from "@/lib/inquiries/labels";
+import { STATUS_VALUES } from "@/lib/inquiries/types";
 
 interface StatusSelectorProps {
   currentStatus: string;

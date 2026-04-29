@@ -1,7 +1,7 @@
-import { AuthForm } from "@/components/auth/AuthForm";
-import { signupAction } from "../actions";
-import type { SignupInput } from "@/lib/validation";
 import Link from "next/link";
+import { AuthForm } from "@/components/auth/AuthForm";
+import type { SignupInput } from "@/lib/validation";
+import { signupAction } from "../actions";
 
 export default function SignupPage() {
   return (
