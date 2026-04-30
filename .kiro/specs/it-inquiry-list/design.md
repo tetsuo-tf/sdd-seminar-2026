@@ -641,6 +641,9 @@ erDiagram
 - `lib/validation.ts`: `signupSchema` / `loginSchema` / `inquirySchema` / `statusUpdateSchema` の境界値（タイトル 0/120/121 文字、本文 0/2000/2001 文字、無効カテゴリ／ステータス）。要件 1.3、3.5、6.1。
 - `lib/inquiries/repository.ts`: `listInquiries` の `criteria` 組み合わせと `findInquiryById` の存在／不在分岐（in-memory SQLite or mocked Prisma）。要件 4.1、5.2〜5.5、4.3、7.2、7.7。
 - `lib/authz.ts`: `requireRole` 不一致時の挙動、`assertOwner` の throw 条件。要件 2.4、2.5、4.5。
+- **コンポーネント単体テスト**（Vitest + Testing Library、コロケーション配置）:
+  - **`app/(it-staff)/admin/inquiries/[id]/page.test.tsx`**: 有効な inquiry を与えた場合の全項目描画（タイトル / カテゴリラベル / 本文の改行保持 / 登録者 / 登録日時 / `StatusBadge` / `StatusSelect` / 戻りリンク href の searchParams 保持）と、`findInquiryById` が null を返した場合の `EmptyState` 描画分岐。`vi.mock` で `findInquiryById` / `requireRole` をモック。要件 7.2、7.3、7.4、7.6、7.7。
+  - **`app/(it-staff)/admin/inquiries/page.test.tsx`**: タイトル列が `<a href="/admin/inquiries/{id}?...">` 形式でリンク化されており、searchParams（keyword/status/sort の有無組み合わせ）を query string として保持していること、および `StatusSelect` セルがタイトルリンク外に独立配置されていること。`vi.mock` で `listInquiries` / `requireRole` をモック。要件 7.1、7.6。
 
 ### Integration Tests
 

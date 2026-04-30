@@ -1,9 +1,9 @@
 {
   "feature_name": "it-inquiry-list",
   "created_at": "2026-04-29T13:19:46Z",
-  "updated_at": "2026-04-30T13:30:00Z",
+  "updated_at": "2026-04-30T13:55:00Z",
   "language": "ja",
-  "phase": "design-generated",
+  "phase": "tasks-generated",
   "approvals": {
     "requirements": {
       "generated": true,
@@ -11,12 +11,12 @@
     },
     "design": {
       "generated": true,
-      "approved": false
+      "approved": true
     },
     "tasks": {
       "generated": true,
-      "approved": false
+      "approved": true
     }
   },
-  "ready_for_implementation": false
+  "ready_for_implementation": true
 }
