@@ -159,7 +159,7 @@
 ## Requirement 7 Extension (要件7: 情シス担当向け問合せ詳細表示)
 
 - [ ] 19. 情シス担当向け問合せ詳細表示の実装
-  - [ ] 19.1 (P) 詳細ページコンポーネントの新規作成
+  - [x] 19.1 (P) 詳細ページコンポーネントの新規作成
     - `app/(it-staff)/admin/inquiries/[id]/page.tsx` を Server Component として新規作成
     - `findInquiryById(params.id)` でデータ取得、戻り値が存在する場合はタイトル・カテゴリ（日本語ラベル）・本文（`whitespace-pre-wrap break-words` で改行保持）・登録者氏名・登録日時（`toLocaleString("ja-JP")`）・現在ステータス（`StatusBadge`）を表示
     - 詳細画面に `StatusSelect` を埋め込みステータス変更を可能にする（既存の `updateInquiryStatusSimple` を呼び出し、`router.refresh()` で再描画）
