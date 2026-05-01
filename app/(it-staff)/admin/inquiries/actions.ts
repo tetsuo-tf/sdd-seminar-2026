@@ -37,7 +37,9 @@ export async function updateInquiryStatusAction(
     );
 
     // Revalidate both admin and employee pages to reflect the status change
-    revalidatePath("/admin/inquiries");
+    // Use "layout" mode for /admin/inquiries so that descendant routes
+    // (e.g., /admin/inquiries/[id] detail page) are also revalidated.
+    revalidatePath("/admin/inquiries", "layout");
     revalidatePath("/inquiries");
 
     return {

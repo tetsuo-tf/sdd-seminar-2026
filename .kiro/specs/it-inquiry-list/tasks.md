@@ -179,7 +179,7 @@
     - _Requirements: 7.1, 7.6_
     - _Boundary: IT Staff List Page_
 
-  - [ ] 19.3 (P) ステータス更新 Action の revalidate 範囲を layout モードへ拡大
+  - [x] 19.3 (P) ステータス更新 Action の revalidate 範囲を layout モードへ拡大
     - `app/(it-staff)/admin/inquiries/actions.ts` の `revalidatePath("/admin/inquiries")` を `revalidatePath("/admin/inquiries", "layout")` に変更
     - 既存の `revalidatePath("/inquiries")`（社員側反映用）は維持
     - これにより詳細ページ追加後も配下が一括 revalidate され、詳細パスを actions.ts に列挙する手間を排除
