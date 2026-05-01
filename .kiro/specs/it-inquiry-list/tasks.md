@@ -187,7 +187,7 @@
     - _Requirements: 6.4, 7.5_
     - _Boundary: IT Staff Inquiry Actions_
 
-  - [ ] 19.4 (P) 詳細ページのコンポーネント単体テスト
+  - [x] 19.4 (P) 詳細ページのコンポーネント単体テスト
     - `app/(it-staff)/admin/inquiries/[id]/page.test.tsx` を新規作成（structure.md のコロケーション規約に従う）
     - `findInquiryById` を `vi.mock` でモックし、以下2シナリオを検証:
       - **有効な inquiry**: タイトル / カテゴリ日本語ラベル / 本文（改行保持を `whitespace-pre-wrap` クラスまたは DOM テキストノードで確認）/ 登録者氏名 / 登録日時（ja-JP 整形）/ ステータスバッジ / `StatusSelect` / 戻りリンクの全要素が描画される。戻りリンク `<a>` の `href` が与えた searchParams を query string として保持している
