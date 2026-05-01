@@ -170,7 +170,7 @@
     - _Requirements: 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 2.3, 6.3_
     - _Boundary: IT Staff Detail Page_
 
-  - [ ] 19.2 (P) 全件一覧のタイトル列リンク化と searchParams 持ち回し
+  - [x] 19.2 (P) 全件一覧のタイトル列リンク化と searchParams 持ち回し
     - `app/(it-staff)/admin/inquiries/page.tsx` のタイトル列を `<Link href="/admin/inquiries/{id}?{現在のsearchParams}">` で wrap
     - `URLSearchParams` で keyword/status/sort のうち値があるものだけを query string に組み立て直して詳細URLに付与
     - `StatusSelect` セルはリンク外を維持し、行内クリックの操作衝突を回避（タイトル列のみリンク）

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { InquiryFilterBar } from "@/components/inquiries/InquiryFilterBar";
 import { StatusSelect } from "@/components/inquiries/StatusSelect";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -26,6 +27,21 @@ export default async function ITStaffInquiriesPage({
     status,
     sort,
   });
+
+  // 詳細ページへのリンクに現在の検索条件を query string として持ち回す
+  // （要件 7.6: 戻り導線で検索条件再現）
+  const detailQueryParams = new URLSearchParams();
+  if (params.keyword) {
+    detailQueryParams.set("keyword", params.keyword);
+  }
+  if (params.status) {
+    detailQueryParams.set("status", params.status);
+  }
+  if (params.sort) {
+    detailQueryParams.set("sort", params.sort);
+  }
+  const detailQs = detailQueryParams.toString();
+  const detailQuerySuffix = detailQs ? `?${detailQs}` : "";
 
   return (
     <div>
@@ -71,8 +87,13 @@ export default async function ITStaffInquiriesPage({
             <tbody className="bg-white divide-y divide-gray-200">
               {inquiries.map((inquiry) => (
                 <tr key={inquiry.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {inquiry.title}
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <Link
+                      href={`/admin/inquiries/${inquiry.id}${detailQuerySuffix}`}
+                      className="font-medium text-blue-600 hover:underline"
+                    >
+                      {inquiry.title}
+                    </Link>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {CATEGORY_LABELS[inquiry.category]}
