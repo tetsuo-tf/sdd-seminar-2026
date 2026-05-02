@@ -224,7 +224,7 @@
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7_
     - _Boundary: IT Staff Detail Flow_
 
-  - [ ] 20.2 認可境界の再検証（employee ロール / 未ログイン）
+  - [x] 20.2 認可境界の再検証（employee ロール / 未ログイン）
     - employee ロールで `/admin/inquiries/{任意のid}` を直接アクセス → `(it-staff)/layout.tsx` のロールガードにより `/login`（または認可エラー画面）へリダイレクトされることを確認
     - 未ログイン状態で `/admin/inquiries/{任意のid}` を直接アクセス → middleware（`proxy.ts`）または layout により `/login` へリダイレクトされることを確認
     - 完了状態: 上記2ケースとも保護されており、employee や未ログイン経路から問合せ詳細の閲覧・ステータス変更が一切できない

@@ -185,6 +185,47 @@ describe("ITStaffInquiryDetailPage", () => {
     });
   });
 
+  describe("認可境界", () => {
+    // 設計上の前提:
+    //   - Edge ミドルウェア (proxy.ts) が cookie 不在時に /login へリダイレクト (E2E は Playwright で別途検証)
+    //   - (it-staff)/layout.tsx の requireRole("it-staff") が一次防御
+    //   - 詳細ページ自身の requireRole("it-staff") が二重防御
+    // ここでは Vitest 環境で検証可能な「ページ自身の二重防御」を確認する。
+    // requireRole が throw した場合、ページの描画 (Promise) が reject されることを保証する。
+
+    it("employee ロールでアクセスした場合、ページ描画が FORBIDDEN で reject される (Requirement 2.2 / 2.4 / 4.5)", async () => {
+      // requireRole("it-staff") に対して employee セッションを渡したときの挙動を再現
+      requireRoleMock.mockReset();
+      requireRoleMock.mockRejectedValue(new Error("FORBIDDEN"));
+
+      const params = Promise.resolve({ id: "test-id-1" });
+      const searchParams = Promise.resolve({});
+
+      await expect(Page({ params, searchParams })).rejects.toThrow("FORBIDDEN");
+
+      // ページが requireRole("it-staff") を呼んだことを検証 (二重防御の存在確認)
+      expect(requireRoleMock).toHaveBeenCalledWith("it-staff");
+      // ガード失敗後はリポジトリにアクセスしない
+      expect(findInquiryByIdMock).not.toHaveBeenCalled();
+    });
+
+    it("未ログインでアクセスした場合、ページ描画が UNAUTHORIZED で reject される (Requirement 2.2 / 2.4 / 4.5)", async () => {
+      // requireUser がセッション不在で throw する状況を再現
+      requireRoleMock.mockReset();
+      requireRoleMock.mockRejectedValue(new Error("UNAUTHORIZED"));
+
+      const params = Promise.resolve({ id: "test-id-1" });
+      const searchParams = Promise.resolve({});
+
+      await expect(Page({ params, searchParams })).rejects.toThrow(
+        "UNAUTHORIZED",
+      );
+
+      expect(requireRoleMock).toHaveBeenCalledWith("it-staff");
+      expect(findInquiryByIdMock).not.toHaveBeenCalled();
+    });
+  });
+
   describe("inquiry が見つからない場合", () => {
     beforeEach(() => {
       findInquiryByIdMock.mockResolvedValue(null);
