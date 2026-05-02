@@ -199,7 +199,7 @@
     - _Requirements: 7.2, 7.3, 7.4, 7.6, 7.7_
     - _Boundary: app/(it-staff)/admin/inquiries/[id]/page_
 
-  - [ ] 19.5 (P) 一覧タイトル列リンクのコンポーネント単体テスト
+  - [x] 19.5 (P) 一覧タイトル列リンクのコンポーネント単体テスト
     - `app/(it-staff)/admin/inquiries/page.test.tsx` を新規作成（コロケーション）
     - `listInquiries` を `vi.mock` でモックし、複数件の inquiry を返すスタブを与える
     - `requireRole` のモックも添えて it-staff セッションを返す
