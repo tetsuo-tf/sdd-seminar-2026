@@ -1,0 +1,14 @@
+{
+  "features": {
+    "ghcr.io/devcontainers-extra/features/bun:1": {
+      "version": "1.1.0",
+      "resolved": "ghcr.io/devcontainers-extra/features/bun@sha256:0624284ecaead9dd4c6654616a7f939cfa4ebcbc60593700a74e35b1767befa5",
+      "integrity": "sha256:0624284ecaead9dd4c6654616a7f939cfa4ebcbc60593700a74e35b1767befa5"
+    },
+    "ghcr.io/swift-server-community/swift-devcontainer-features/sqlite:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/swift-server-community/swift-devcontainer-features/sqlite@sha256:b8bf7b6a4125a36b0d722275bc89369bc8f1869e2ed6e88080dae45d45fbf7df",
+      "integrity": "sha256:b8bf7b6a4125a36b0d722275bc89369bc8f1869e2ed6e88080dae45d45fbf7df"
+    }
+  }
+}
